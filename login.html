@@ -1,0 +1,49 @@
+<!doctype html>
+<!-- این صفحه ورود به حساب را انجام می‌دهد و راه ثبت‌نام را نشان می‌دهد. -->
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#140F2E" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <title>ورود | برنامه امروز</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="data-layer.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body data-page="login">
+    <main class="app auth-app">
+      <header class="auth-header">
+        <div class="brand-mark" aria-hidden="true">✦</div>
+        <p class="eyebrow">خوش اومدی</p>
+        <h1>برنامه امروز</h1>
+        <p class="auth-intro">برای ادامه، وارد حسابت شو.</p>
+      </header>
+
+      <section class="panel auth-panel" aria-labelledby="login-heading">
+        <h2 id="login-heading">ورود به حساب</h2>
+        <p class="notice auth-message" id="auth-message" role="status" hidden></p>
+        <form id="login-form" novalidate>
+          <label class="field-label" for="login-username">یوزرنیم</label>
+          <input class="text-input" id="login-username" name="username" autocomplete="username" required />
+          <label class="field-label" for="login-password">رمز عبور</label>
+          <input
+            class="text-input"
+            id="login-password"
+            name="password"
+            type="password"
+            autocomplete="current-password"
+            required
+          />
+          <button class="primary-button auth-submit" type="submit">ورود</button>
+        </form>
+        <button class="text-link forgot-link" id="forgot-password" type="button">رمز را فراموش کردی؟</button>
+        <p class="auth-switch">حساب نداری؟ <a href="register.html">ثبت‌نام</a></p>
+        <p class="prototype-note">حساب‌ها فعلاً فقط روی همین دستگاه ذخیره می‌شن.</p>
+      </section>
+    </main>
+  </body>
+</html>

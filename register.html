@@ -1,0 +1,61 @@
+<!doctype html>
+<!-- این صفحه حساب تازه می‌سازد و پس از ثبت‌نام کاربر را وارد برنامه می‌کند. -->
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#140F2E" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <title>ثبت‌نام | برنامه امروز</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="data-layer.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body data-page="register">
+    <main class="app auth-app">
+      <header class="subpage-header">
+        <a class="back-link" href="login.html" aria-label="بازگشت به ورود">‹</a>
+        <div>
+          <p class="eyebrow">شروع تازه</p>
+          <h1>ساخت حساب</h1>
+        </div>
+      </header>
+
+      <section class="panel auth-panel" aria-labelledby="register-heading">
+        <h2 id="register-heading">حساب تازه بساز</h2>
+        <p class="notice auth-message" id="auth-message" role="status" hidden></p>
+        <form id="register-form" novalidate>
+          <label class="field-label" for="register-email">ایمیل</label>
+          <input class="text-input" id="register-email" name="email" type="email" autocomplete="email" required />
+          <label class="field-label" for="register-username">یوزرنیم</label>
+          <input class="text-input" id="register-username" name="username" autocomplete="username" required />
+          <p class="field-hint">۳ تا ۲۰ حرف انگلیسی، عدد یا زیرخط.</p>
+          <label class="field-label" for="register-password">رمز عبور</label>
+          <input
+            class="text-input"
+            id="register-password"
+            name="password"
+            type="password"
+            autocomplete="new-password"
+            required
+          />
+          <label class="field-label" for="register-confirm-password">تکرار رمز</label>
+          <input
+            class="text-input"
+            id="register-confirm-password"
+            name="confirmPassword"
+            type="password"
+            autocomplete="new-password"
+            required
+          />
+          <button class="primary-button auth-submit" type="submit">ثبت‌نام</button>
+        </form>
+        <p class="auth-switch">حساب داری؟ <a href="login.html">ورود</a></p>
+        <p class="prototype-note">اطلاعات این نسخه فقط روی همین دستگاه می‌مونه.</p>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,127 @@
+<!doctype html>
+<!-- این صفحه برای افزودن یک برنامهٔ تازه یا ویرایش عنوان و زمان آن است. -->
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#140F2E" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <title>چی توی ذهنته؟ | برنامه امروز</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="data-layer.js" defer></script>
+    <script src="script.js" defer></script>
+    <script src="pwa.js" defer></script>
+  </head>
+  <body data-page="add">
+    <main class="app">
+      <!-- سربرگ صفحه راه بازگشت و عنوان فرم را نشان می‌دهد. -->
+      <header class="subpage-header">
+        <a class="back-link" href="index.html" aria-label="بازگشت به برنامه امروز">‹</a>
+        <div>
+          <p class="eyebrow">یه برنامه تازه</p>
+          <h1 id="form-page-title">چی توی ذهنته؟</h1>
+        </div>
+      </header>
+
+      <!-- فرم عنوان برنامه و زمان انجام را از کاربر می‌گیرد. -->
+      <section class="panel form-panel" aria-labelledby="form-heading">
+        <div class="section-heading">
+          <div class="heading-icon" aria-hidden="true">＋</div>
+          <div>
+            <h2 id="form-heading">برنامه‌ات رو بنویس</h2>
+            <p class="subtitle">بعد زمانش رو انتخاب کن</p>
+          </div>
+        </div>
+
+        <p class="notice" id="storage-notice" role="status" hidden></p>
+        <form id="task-form">
+          <label class="field-label" for="task-input">عنوان برنامه</label>
+          <input
+            class="text-input"
+            id="task-input"
+            name="task"
+            type="text"
+            placeholder="مثلاً: ۲۰ صفحه کتاب خوندن"
+            maxlength="120"
+            autocomplete="off"
+            required
+          />
+
+          <div class="time-heading">
+            <span class="field-label">چه ساعتی؟</span>
+            <span class="time-preview" id="time-preview" dir="ltr">۰۹:۰۰</span>
+          </div>
+          <p class="field-hint">چرخ‌ها رو بالا و پایین بکش.</p>
+
+          <div class="time-choice-row">
+            <div class="time-controls" id="time-controls">
+              <div class="time-picker" id="time-picker" aria-label="انتخاب ساعت و دقیقه">
+                <div class="wheel-group">
+                  <span class="wheel-label" id="minute-label">دقیقه</span>
+                  <div
+                    class="wheel"
+                    id="minute-wheel"
+                    role="listbox"
+                    tabindex="0"
+                    aria-labelledby="minute-label"
+                    aria-label="دقیقه"
+                    data-unit="minute"
+                  ></div>
+                </div>
+                <span class="time-separator" aria-hidden="true">:</span>
+                <div class="wheel-group">
+                  <span class="wheel-label" id="hour-label">ساعت</span>
+                  <div
+                    class="wheel"
+                    id="hour-wheel"
+                    role="listbox"
+                    tabindex="0"
+                    aria-labelledby="hour-label"
+                    aria-label="ساعت"
+                    data-unit="hour"
+                  ></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- با روشن‌کردن این گزینه، برنامه بدون ساعت ذخیره می‌شود. -->
+            <label class="no-time-control" for="no-time-toggle">
+              <span class="no-time-label">بدون ساعت</span>
+              <input class="time-toggle-input" id="no-time-toggle" type="checkbox" />
+              <span class="time-toggle-track" aria-hidden="true"></span>
+            </label>
+          </div>
+
+          <div class="form-actions">
+            <button class="primary-button" id="submit-button" type="submit">
+              <span aria-hidden="true">＋</span>
+              بذار توی برنامه‌م
+            </button>
+            <a class="quiet-button" href="index.html">بی‌خیال</a>
+          </div>
+        </form>
+      </section>
+    </main>
+    <!-- این پنجره وقتی سقف دورهای نسخهٔ رایگان پر شده باشد توضیح می‌دهد چرا برنامهٔ تازه ساخته نمی‌شود. -->
+    <dialog
+      class="archive-confirm-dialog round-limit-dialog"
+      id="round-limit-dialog"
+      aria-labelledby="round-limit-title"
+    >
+      <div class="confirm-card">
+        <span class="confirm-icon" aria-hidden="true">✦</span>
+        <h2 id="round-limit-title">سقف دورهای امروز پر شده</h2>
+        <p class="confirm-description">
+          به سقف مجاز روزانه نسخه رایگان رسیدی. با تهیه نسخه پریمیوم می‌تونی هر روز بدون محدودیت دور بسازی.
+        </p>
+        <div class="confirm-actions">
+          <a class="confirm-keep-button round-limit-home" href="index.html">برگشت به برنامه امروز</a>
+        </div>
+      </div>
+    </dialog>
+  </body>
+</html>

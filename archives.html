@@ -1,0 +1,78 @@
+<!doctype html>
+<!-- این صفحه برنامه‌هایی را که انجام شده‌اند، به‌ترتیب روز در بایگانی نشان می‌دهد. -->
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#140F2E" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <title>روزهای گذشته | برنامه امروز</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="data-layer.js" defer></script>
+    <script src="script.js" defer></script>
+    <script src="pwa.js" defer></script>
+  </head>
+  <body data-page="archives">
+    <main class="app">
+      <!-- سربرگ صفحه راه بازگشت و عنوان بایگانی را نشان می‌دهد. -->
+      <header class="subpage-header">
+        <a class="back-link" href="index.html" aria-label="بازگشت به برنامه امروز">‹</a>
+        <div>
+          <p class="eyebrow">مرور روزهای قبل</p>
+          <h1>روزهای گذشته</h1>
+        </div>
+      </header>
+
+      <!-- برنامه‌های انجام‌شده و پیامِ خالی‌بودن بایگانی در این بخش قرار می‌گیرند. -->
+      <section class="panel archives-panel" aria-labelledby="archives-heading">
+        <div class="list-topline">
+          <div>
+            <p class="eyebrow">یادگاری روزهای خوب</p>
+            <h2 id="archives-heading">برنامه‌های انجام‌شده</h2>
+          </div>
+          <span class="task-count" id="archive-count-badge">۰</span>
+        </div>
+        <p class="notice" id="storage-notice" role="status" hidden></p>
+        <!-- این ابزارها انتخاب چند روز و پاک‌کردن یک روز یا همهٔ بایگانی را ممکن می‌کنند. -->
+        <div class="archive-tools" id="archive-tools" hidden>
+          <label class="selection-mode-control" for="selection-mode-toggle">
+            <input id="selection-mode-toggle" type="checkbox" />
+            <span>انتخاب چندتایی</span>
+          </label>
+          <label class="select-all-control" id="select-all-control" for="select-all-toggle" hidden>
+            <input id="select-all-toggle" type="checkbox" />
+            <span>انتخاب همه</span>
+          </label>
+          <button class="archive-tool-button" id="delete-selected-button" type="button" hidden>
+            حذف انتخاب‌شده‌ها
+          </button>
+          <button class="archive-tool-button is-danger" id="delete-all-button" type="button">
+            حذف همه
+          </button>
+        </div>
+        <div class="archive-list" id="archive-list"></div>
+        <div class="empty-state" id="archive-empty">
+          <span class="empty-icon" aria-hidden="true">▤</span>
+          <p class="empty-title">هنوز روزی ذخیره نشده</p>
+          <p class="empty-description">برنامه‌های انجام‌شده‌ات اینجا می‌مونن.</p>
+        </div>
+      </section>
+    </main>
+    <!-- پنجرهٔ شیشه‌ای برای اینکه حذف ناخواسته انجام نشود. -->
+    <dialog class="archive-confirm-dialog" id="archive-confirm-dialog" aria-labelledby="confirm-title">
+      <form method="dialog" class="confirm-card">
+        <span class="confirm-icon" aria-hidden="true">!</span>
+        <h2 id="confirm-title">این روز برای همیشه پاک بشه؟</h2>
+        <p class="confirm-description" id="confirm-description"></p>
+        <div class="confirm-actions">
+          <button class="confirm-delete-button" id="confirm-delete-button" type="button">حذف کن</button>
+          <button class="confirm-keep-button" id="confirm-keep-button" type="button">نگهش دار</button>
+        </div>
+      </form>
+    </dialog>
+  </body>
+</html>

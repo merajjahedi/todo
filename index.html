@@ -1,0 +1,123 @@
+<!doctype html>
+<!-- این صفحه برنامه‌های امروز، میزان پیشرفت و راه‌های رفتن به افزودن برنامه یا روزهای گذشته را نشان می‌دهد. -->
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#140F2E" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <title>برنامه امروز</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="data-layer.js" defer></script>
+    <script src="script.js" defer></script>
+    <script src="pwa.js" defer></script>
+  </head>
+  <body data-page="home">
+    <main class="app">
+      <!-- پیوند پروفایل، نام کاربر و عکس انتخاب‌شده را نشان می‌دهد. -->
+      <a class="profile-chip" id="profile-chip" href="profile.html" aria-label="رفتن به پروفایل">
+        <img class="profile-chip-avatar" id="profile-chip-avatar" alt="" />
+        <span class="profile-chip-name" id="profile-chip-name"></span>
+      </a>
+      <!-- سربرگ صفحه نام برنامه و تاریخ امروز را در خود دارد. -->
+      <header class="page-header">
+        <div class="brand-mark" aria-hidden="true">✓</div>
+        <p class="eyebrow" id="greeting">سلام</p>
+        <p class="today" id="today"></p>
+        <h1>برنامه امروز</h1>
+      </header>
+
+      <!-- این بخش فهرست برنامه‌ها، نوار پیشرفت و پیام‌های وضعیت را در خود دارد. -->
+      <section class="panel list-panel" aria-labelledby="list-heading">
+        <div class="list-topline">
+          <div>
+            <p class="eyebrow">برای امروز</p>
+            <h2 id="list-heading">برنامه‌های امروز</h2>
+          </div>
+          <div class="list-counts">
+            <span class="round-badge" id="round-number">دور ۱</span>
+            <span class="task-count" id="task-count" aria-label="تعداد کل برنامه‌ها">۰</span>
+          </div>
+        </div>
+
+        <p class="notice round-message" id="round-message" role="status" hidden></p>
+        <div class="progress-section">
+          <div class="progress-copy">
+            <span id="progress-label">۰ از ۰ برنامه انجام شد</span>
+            <span id="progress-percent">۰٪</span>
+          </div>
+          <div
+            class="progress-track"
+            id="progress-track"
+            role="progressbar"
+            aria-label="پیشرفت برنامه‌ها"
+            aria-valuemin="0"
+            aria-valuemax="0"
+            aria-valuenow="0"
+          >
+            <span class="progress-fill" id="progress-fill"></span>
+          </div>
+        </div>
+
+        <p class="notice" id="storage-notice" role="status" hidden></p>
+        <ul class="task-list" id="task-list" aria-label="برنامه‌های مرتب‌شده بر اساس ساعت"></ul>
+
+        <!-- برنامه‌هایی که ساعت ندارند جدا از برنامه‌های ساعت‌دار نشان داده می‌شوند. -->
+        <section class="untimed-section" id="untimed-section" aria-labelledby="untimed-heading" hidden>
+          <h3 class="untimed-heading" id="untimed-heading">هر وقت شد</h3>
+          <ul class="task-list" id="untimed-task-list" aria-label="برنامه‌های بدون ساعت"></ul>
+        </section>
+
+        <div class="empty-state" id="empty-state">
+          <span class="empty-icon" aria-hidden="true">☾</span>
+          <p class="empty-title">امروز هنوز خالیه.</p>
+          <p class="empty-description">یه چیزی بنویس.</p>
+        </div>
+
+        <!-- بستن روز فقط با انتخاب کاربر انجام می‌شود و وقتی برنامهٔ ناتمام باشد غیرفعال است. -->
+        <div class="finish-day-section" id="finish-day-section" hidden>
+          <button class="finish-day-button" id="finish-day-button" type="button" disabled>
+            پایان برنامه‌های امروز
+          </button>
+          <p class="finish-day-hint" id="finish-day-hint">
+            اول همه برنامه‌ها رو انجام بده یا حذفشون کن
+          </p>
+        </div>
+      </section>
+
+      <!-- دکمه‌های پایین صفحه برای افزودن برنامه و دیدن روزهای گذشته هستند. -->
+      <footer class="bottom-actions">
+        <a class="primary-button" href="add.html">
+          <span aria-hidden="true">＋</span>
+          یه برنامه جدید
+        </a>
+        <a class="archive-link" href="archives.html">
+          روزهای گذشته
+          <span id="archive-count">۰</span>
+        </a>
+      </footer>
+    </main>
+    <!-- پیش از انتقال برنامه‌های امروز به روزهای گذشته، از کاربر تأیید می‌گیریم. -->
+    <dialog
+      class="archive-confirm-dialog"
+      id="finish-day-dialog"
+      aria-labelledby="finish-day-confirm-title"
+    >
+      <form method="dialog" class="confirm-card">
+        <span class="confirm-icon" aria-hidden="true">✓</span>
+        <h2 id="finish-day-confirm-title">این دور تموم بشه؟</h2>
+        <p class="confirm-description">برنامه‌های این دور به روزهای گذشته می‌رن و دور بعدی شروع می‌شه.</p>
+        <div class="confirm-actions">
+          <button class="confirm-delete-button" id="confirm-finish-day" type="button">پایان دور</button>
+          <button class="confirm-keep-button" id="keep-today" type="button">ادامه می‌دم</button>
+        </div>
+      </form>
+    </dialog>
+    <!-- این پیام کوتاه برای توضیح زمانِ تیک‌زدن برنامه‌های آینده است. -->
+    <div class="task-toast" id="task-toast" role="status" aria-live="polite" hidden></div>
+  </body>
+</html>

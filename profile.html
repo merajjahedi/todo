@@ -1,0 +1,112 @@
+<!doctype html>
+<!-- این صفحه اطلاعات پروفایل، عکس، امتیازها و تنظیمات حساب را نشان می‌دهد. -->
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#140F2E" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <title>پروفایل | برنامه امروز</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="data-layer.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body data-page="profile">
+    <main class="app profile-app">
+      <header class="subpage-header">
+        <a class="back-link" href="index.html" aria-label="بازگشت به برنامه امروز">‹</a>
+        <div>
+          <p class="eyebrow">گوشهٔ خودت</p>
+          <h1>پروفایل</h1>
+        </div>
+      </header>
+
+      <p class="notice profile-message" id="profile-message" role="status" hidden></p>
+
+      <section class="panel profile-card" aria-labelledby="profile-username">
+        <img class="profile-avatar-large" id="profile-avatar" alt="عکس پروفایل" />
+        <h2 id="profile-username"></h2>
+        <p class="profile-email" id="profile-email"></p>
+        <p class="profile-joined"><span>عضو از</span> <time id="profile-joined"></time></p>
+
+        <div class="avatar-actions">
+          <label class="profile-action-button" for="avatar-file">انتخاب از گالری</label>
+          <input class="visually-hidden" id="avatar-file" type="file" accept="image/*" />
+          <button class="profile-action-button" id="open-camera" type="button">گرفتن عکس</button>
+        </div>
+
+        <div class="avatar-picker-wrap">
+          <p class="field-label">یا یکی از آواتارها رو انتخاب کن</p>
+          <div class="avatar-picker" id="avatar-picker" aria-label="انتخاب آواتار آماده"></div>
+        </div>
+
+        <div class="camera-panel" id="camera-panel" hidden>
+          <video id="camera-preview" autoplay playsinline></video>
+          <div class="camera-actions">
+            <button class="profile-action-button" id="capture-photo" type="button">گرفتن عکس</button>
+            <button class="profile-action-button" id="close-camera" type="button">بستن دوربین</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel score-card" aria-labelledby="score-heading">
+        <div class="section-heading">
+          <div class="heading-icon" aria-hidden="true">✦</div>
+          <div>
+            <h2 id="score-heading">امتیازهای تو</h2>
+            <p class="subtitle">قدم‌های کوچیکت حساب می‌شن.</p>
+          </div>
+        </div>
+        <p class="score-total"><span id="score-total">۰</span><span>امتیاز</span></p>
+        <div class="profile-stat">
+          <span>برنامه‌های انجام‌شده</span>
+          <strong id="completed-total">۰</strong>
+        </div>
+        <div class="today-bonus">
+          <div class="today-bonus-copy">
+            <span>پیشرفت امروز</span>
+            <strong id="today-progress-label">۰ از ۰ برنامه</strong>
+          </div>
+          <div class="bonus-track" role="progressbar" aria-label="پیشرفت تا بونوس امروز">
+            <span class="bonus-fill" id="today-progress-fill"></span>
+          </div>
+          <p class="bonus-hint" id="today-bonus-hint"></p>
+        </div>
+        <div class="score-history-section">
+          <h3>تاریخچهٔ امتیاز</h3>
+          <ul class="score-history" id="score-history"></ul>
+          <p class="empty-description" id="score-history-empty">هنوز امتیازی ثبت نشده.</p>
+        </div>
+      </section>
+
+      <section class="panel password-card" aria-labelledby="password-heading">
+        <h2 id="password-heading">تغییر رمز</h2>
+        <p class="notice password-message" id="password-message" role="status" hidden></p>
+        <form id="password-form" novalidate>
+          <label class="field-label" for="current-password">رمز فعلی</label>
+          <input class="text-input" id="current-password" type="password" autocomplete="current-password" required />
+          <label class="field-label" for="new-password">رمز تازه</label>
+          <input class="text-input" id="new-password" type="password" autocomplete="new-password" required />
+          <label class="field-label" for="repeat-new-password">تکرار رمز تازه</label>
+          <input
+            class="text-input"
+            id="repeat-new-password"
+            type="password"
+            autocomplete="new-password"
+            required
+          />
+          <button class="quiet-button password-submit" type="submit">ذخیرهٔ رمز تازه</button>
+        </form>
+      </section>
+
+      <button class="logout-button" id="logout-button" type="button">خروج از حساب</button>
+      <p class="prototype-note">نسخهٔ فعلی آزمایشی است؛ رمزها به شکل هش‌شده نگهداری می‌شن.</p>
+    </main>
+
+    <!-- canvas پنهان، عکس بزرگ را پیش از ذخیره به تصویری سبک‌تر تبدیل می‌کند. -->
+    <canvas id="avatar-canvas" hidden></canvas>
+  </body>
+</html>
